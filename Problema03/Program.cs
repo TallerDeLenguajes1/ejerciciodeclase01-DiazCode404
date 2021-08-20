@@ -7,11 +7,16 @@ namespace Problema03
     {
         static void Main(string[] args)
         {
-            Auto Auto1 = CrearAutoFiat(2020);            
-            MostrarAuto(Auto1);            
+
+            Auto Auto1 = CrearAutoFiat(2020);
+            MostrarAuto(Auto1);
 
             Auto Auto2 = CrearAutoPeugeot();
-            MostrarAuto(Auto2);
+            
+                MostrarAuto(Auto2);
+
+          
+
         }
 
         static Auto CrearAutoFiat(int? anio = null)
@@ -32,24 +37,35 @@ namespace Problema03
 
         static Auto CrearAutoPeugeot(int? anio = null)
         {
-            Auto auto = null;
             
-            if (anio != null)
-            {
-                auto = new Auto()
+            
+                Auto auto = null;
+                if (anio != null)
                 {
-                    Anio = anio.Value,
-                    Modelo = "Peugeot"
-                };
-            }
+                    auto = new Auto()
+                    {
+                        Anio = anio.Value,
+                        Modelo = "Peugeot"
+                    };
+                }
 
-            return auto;
+                return auto;
+           
         }
 
         static void MostrarAuto(Auto auto)
         {
-            Console.WriteLine("{0} - {1}", auto.Modelo, auto.Anio);
-            Console.ReadLine();
+            try
+            {
+                Console.WriteLine("{0} - {1}", auto.Modelo, auto.Anio);
+                Console.ReadLine();
+            }
+            catch (NullReferenceException error)
+            {
+                Console.WriteLine(error.Message);
+                
+            }
+                
         }
     }
 }
